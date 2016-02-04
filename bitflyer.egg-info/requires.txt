@@ -1,2 +1,0 @@
-requests==2.6.0
-pytz>2

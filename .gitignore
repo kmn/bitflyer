@@ -12,7 +12,7 @@ tox.ini
 cover/
 build/
 docs/_build
-coincheck.egg-info/
+bitflyer.egg-info/
 *.pyc
 *.swp
 *.egg
