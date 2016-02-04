@@ -1,0 +1,105 @@
+Metadata-Version: 1.1
+Name: bitflyer
+Version: 0.0.1a
+Summary: Bitflyer API Library for Python
+Home-page: https://github.com/kmn/bitflyer
+Author: Shohei Kamon
+Author-email: kamonshohei@gmail.com
+License: MIT
+Description: # Bitflyer: Bitflyer Api Library
+        
+        bitflyer は [bitflyer](https://bitfyer.jp) の python 製 api ライブラリです. 
+        
+        ```
+        > from bitflyer import market
+        > m1 = market.Market()
+        > m1.ticker()
+        '{"last":30930,"bid":30810,"ask":30930,"high":31500,"low":30220,"volume":"560.51814602","timestamp":1428338044}'
+        ```
+        
+        ## Documentation
+        
+        Documentation for Bitflyer API is  available at https://lightning.bitflyer.jp/docs?lang=ja
+        
+        ### Order
+        
+         注文が決済されたら、キャンセルできないので注意してください.
+        
+        ```
+         # 20000 jpy で 0.1 の bitcoin を購入する注文をする.
+         
+         # 40000 jpy で 0.1 の bitcoin を売却する注文をする.
+         
+         # 自分の注文の一覧を表示する.
+         
+         # 注文番号 676197 の注文をキャンセルする. (注文番号は bitflyer.order.list() のid)
+         
+         # 自分の取引履歴を表示する.
+        ```
+         
+        ### Market
+         
+        bitflyer の市場情報を取得します.
+         
+        ```
+         # bitflyer の最新市場情報を取得する.
+         
+         # bitflyer の最新取引履歴を取得する.
+        
+         # bitflyer の最新板情報を取得する.
+        ```
+        
+        ### Account
+        
+        ユーザのアカウント情報を取得します.
+        
+        ```
+         # アカウントの情報を表示します.
+         
+         # アカウントの残高を確認できます.
+        ```
+        
+        
+        ## Environment
+        
+        - support Python 3.x,2.7)
+        
+        ## Installation
+        
+        
+        ### git
+        
+        ```
+        git clone git@github.com:kmn/bitflyer.git
+        ```
+        
+        ### pip 
+        
+        ```
+        pip install bitflyer
+        ```
+        ## Initialization
+        
+         set your api access-key and secret-key to "bitflyer/settings.py"
+         to get your api keys , see [API key]().
+        
+        ## TODO
+        
+        
+        
+        ## 0.0.1 (2015-04-06)
+        
+        - Birth!
+        
+        
+        
+        
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: Natural Language :: English
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.3
