@@ -29,7 +29,7 @@ def test_sendchildorder():
     '''
     time.sleep(1)
     p1 = Private(access_key=settings.access_key, secret_key=settings.secret_key)
-    result = p1.sendchildorder(product_code='BTC_JPY',size=0.1,child_order_type='LIMIT',side='BUY', price=30000)
+    result = p1.sendchildorder(product_code='BTC_JPY',size=0.01,child_order_type='LIMIT',side='BUY', price=200000)
     ok_(isinstance(result.get('response'),dict))
     ok_(isinstance(result.get('response').get('child_order_acceptance_id'), str))
     return result.get('response').get('child_order_acceptance_id')

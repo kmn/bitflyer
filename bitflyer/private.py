@@ -21,15 +21,14 @@ class Private(object):
                  secret_key=None):
         self.access_key     = access_key
         self.secret_key     = secret_key
-        self.url            = 'https://api.bitflyer.jp'
-        self.timestamp      = make_nonce()
 
     def base_get(self,path=None,**kwargs):
         '''
         API base function
         '''
-        timestamp = self.timestamp
-        uri = self.url + path
+        timestamp = make_nonce()
+        url = 'https://api.bitflyer.jp'
+        uri = url + path
         method = 'GET'
         text = timestamp + method + path
         sign = hmac.new(self.secret_key.encode('utf-8'), text.encode('utf-8'), hashlib.sha256).hexdigest()
@@ -50,10 +49,11 @@ class Private(object):
         '''
         base post function
         '''
-        timestamp = self.timestamp
+        timestamp = make_nonce()
         body = str(kwargs)
         method = 'POST'
-        uri = self.url + path
+        url = 'https://api.bitflyer.jp'
+        uri = url + path
         text = timestamp + method + path + body
         sign = hmac.new(self.secret_key.encode('utf-8'), text.encode('utf-8'), hashlib.sha256).hexdigest()
         headers = {
