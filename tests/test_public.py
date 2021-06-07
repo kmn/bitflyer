@@ -22,6 +22,8 @@ def test_getticker():
     ok_(isinstance(m1.getticker().get('volume'), float))
     ok_(isinstance(m1.getticker().get('best_bid_size'), float))
     ok_(isinstance(m1.getticker().get('best_bid'),float))
+    ok_(m1.getticker().get('product_code'),'BTC_JPY')
+    ok_(m1.getticker(product_code='ETH_JPY').get('product_code'),'ETH_JPY')
 def test_getexecutions():
     m1 = Public()
     ok_(isinstance(m1.getexecutions(), list))
@@ -32,6 +34,8 @@ def test_getexecutions():
     ok_(isinstance(m1.getexecutions()[0].get('sell_child_order_acceptance_id'), str))
     ok_(isinstance(m1.getexecutions()[0].get('id'), int))
     ok_(isinstance(m1.getexecutions()[0].get('buy_child_order_acceptance_id'), str))
+    ok_(isinstance(m1.getexecutions(product_code='ETH_JPY'), list))
+    ok_(len(m1.getexecutions(count=1)), 1)
 def test_getboard():
     m1 = Public()
     ok_(isinstance(m1.getboard(),dict))
@@ -40,7 +44,9 @@ def test_getboard():
     ok_(isinstance(m1.getboard().get('bids')[0].get('price'),float))
     ok_(isinstance(m1.getboard().get('asks')[0].get('size'),float))
     ok_(isinstance(m1.getboard().get('asks')[0].get('price'),float))
+    ok_(isinstance(m1.getboard(product_code='ETH_JPY'), dict))
 def test_gethealth():
     m1 = Public()
     ok_(isinstance(m1.gethealth(), dict))
     ok_(isinstance(m1.gethealth().get('status'), str))
+    ok_(isinstance(m1.gethealth(product_code='ETH_JPY'), dict))
