@@ -1,5 +1,6 @@
 import requests
 import simplejson as json
+from urllib.parse import urlencode
 
 """
 document: https://lightning.bitflyer.jp/docs
@@ -17,26 +18,29 @@ class Public(object):
         pass
 
 
-    def public_api(self,url):
+    def public_api(self,url,**kwargs):
         ''' template function of public api'''
         try :
             url in api_urls
-            return json.loads(requests.get(base_url + api_urls.get(url)).text)
+            api_url = base_url + api_urls.get(url)
+            if kwargs:
+                api_url += '?' + urlencode(kwargs)
+            return json.loads(requests.get(api_url).text)
         except Exception as e:
             print(e)
     
-    def getticker(self):
+    def getticker(self,**kwargs):
         '''Ticker を取得'''
-        return self.public_api('getticker') 
+        return self.public_api('getticker',**kwargs)
     
-    def getboard(self):
+    def getboard(self,**kwargs):
         ''' 板情報を取得 '''
-        return self.public_api('getboard') 
+        return self.public_api('getboard',**kwargs)
     
-    def getexecutions(self):
+    def getexecutions(self,**kwargs):
         ''' 約定の一覧を取得 '''
-        return self.public_api('getexecutions') 
+        return self.public_api('getexecutions',**kwargs)
 
-    def gethealth(self):
+    def gethealth(self,**kwargs):
         '''get exchange health'''
-        return self.public_api('gethealth') 
+        return self.public_api('gethealth',**kwargs)
